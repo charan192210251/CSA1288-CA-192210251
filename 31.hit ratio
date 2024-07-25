@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+// Function to calculate the hit ratio
+float calculateHitRatio(int hits, int misses) {
+    // Calculate the total number of accesses
+    int totalAccesses = hits + misses;
+    
+    // Avoid division by zero
+    if (totalAccesses == 0) {
+        return 0.0f;
+    }
+    
+    // Calculate and return the hit ratio
+    return (float)hits / totalAccesses;
+}
+
+int main() {
+    // Given number of hits and misses
+    int hits = 24;
+    int misses = 5;
+    
+    // Calculate the hit ratio
+    float hitRatio = calculateHitRatio(hits, misses);
+    
+    // Print the result
+    printf("Number of Hits: %d\n", hits);
+    printf("Number of Misses: %d\n", misses);
+    printf("Hit Ratio: %.2f\n", hitRatio);
+    
+    return 0;
+}
