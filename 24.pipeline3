@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <unistd.h> // For sleep function to simulate clock cycles
+
+void fetch() {
+    printf("Fetch Stage: Retrieving the instruction from memory.\n");
+    sleep(1); // Simulate the time taken for the fetch stage
+}
+
+void decode() {
+    printf("Decode Stage: Decoding the instruction.\n");
+    sleep(1); // Simulate the time taken for the decode stage
+}
+
+void execute() {
+    printf("Execute Stage: Performing the operation.\n");
+    sleep(1); // Simulate the time taken for the execute stage
+}
+
+int main() {
+    printf("Starting 3-stage pipeline simulation...\n");
+
+    // Simulate the 3 stages in a pipeline
+    fetch();  // Stage 1: Fetch
+    decode(); // Stage 2: Decode
+    execute(); // Stage 3: Execute
+
+    // Calculate total clock cycles for 1 instruction
+    int stages = 3; // Fetch, Decode, Execute
+    int totalClockCycles = stages;
+
+    printf("Total clock cycles needed to complete 1 instruction: %d\n", totalClockCycles);
+
+    return 0;
+}
