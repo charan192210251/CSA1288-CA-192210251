@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <unistd.h> // For sleep function to simulate clock cycles
+
+void fetch() {
+    printf("Fetch Stage: Retrieving the instruction to subtract two numbers.\n");
+    // Simulate fetch stage time
+    sleep(1); // 1 second delay for simulation purposes
+}
+
+void execute(int a, int b) {
+    printf("Execute Stage: Performing the subtraction of %d from %d.\n", b, a);
+    int result = a - b;
+    printf("Result of subtraction: %d\n", result);
+    // Simulate execute stage time
+    sleep(1); // 1 second delay for simulation purposes
+}
+
+int main() {
+    int num1 = 20;
+    int num2 = 15;
+
+    printf("Starting two-stage pipeline simulation...\n");
+
+    // Fetch and Execute stages
+    fetch();
+    execute(num1, num2);
+
+    printf("Pipeline execution completed.\n");
+
+    return 0;
+}
