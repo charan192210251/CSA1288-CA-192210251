@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+// Function to perform restoring division
+void restoringDivision(int dividend, int divisor) {
+    int quotient = 0;
+    int remainder = dividend;
+    int divisor_shifted = divisor;
+    int shift_count = sizeof(int) * 8; // Number of bits in an integer
+
+    // Loop through all bits of the dividend
+    for (int i = 0; i < shift_count; i++) {
+        // Shift the quotient left by 1 bit
+        quotient <<= 1;
+
+        // Shift the remainder left by 1 bit and add the next bit from the dividend
+        remainder <<= 1;
+        remainder |= (dividend & (1 << (shift_count - 1))) >> (shift_count - 1);
+
+        // Subtract the divisor if the remainder is greater than or equal to the divisor
+        if (remainder >= divisor) {
+            remainder -= divisor;
+            quotient |= 1; // Set the least significant bit of the quotient to 1
+        }
+
+        // Shift the dividend to process the next bit
+        dividend <<= 1;
+    }
+
+    // Print the results
+    printf("Dividend: %d\n", dividend);
+    printf("Divisor: %d\n", divisor);
+    printf("Quotient: %d\n", quotient);
+    printf("Remainder: %d\n", remainder);
+}
+
+int main() {
+    int dividend = 12;
+    int divisor = 4;
+
+    printf("Performing Restoring Division for %d / %d...\n", dividend, divisor);
+    restoringDivision(dividend, divisor);
+
+    return 0;
+}
