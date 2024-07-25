@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+// Function to convert a decimal number to octal
+void decimalToOctal(int decimal) {
+    int octal[32]; // Array to store octal number
+    int index = 0;
+    
+    // Handle the special case where the decimal number is 0
+    if (decimal == 0) {
+        printf("Octal equivalent: 0\n");
+        return;
+    }
+    
+    // Convert decimal to octal
+    while (decimal > 0) {
+        octal[index++] = decimal % 8; // Store remainder (0-7)
+        decimal /= 8; // Divide the number by 8
+    }
+    
+    // Print the octal number in reverse order
+    printf("Octal equivalent: ");
+    for (int i = index - 1; i >= 0; i--) {
+        printf("%d", octal[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int decimalNumber;
+    
+    // Prompt the user to enter a decimal number
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimalNumber);
+    
+    // Convert the decimal number to octal
+    decimalToOctal(decimalNumber);
+    
+    return 0;
+}
