@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <unistd.h> // For sleep function to simulate clock cycles
+
+void fetch() {
+    printf("Fetch Stage: Retrieving the multiplication instruction.\n");
+    sleep(1); // Simulate the time taken for the Fetch stage
+}
+
+void decode() {
+    printf("Decode Stage: Decoding the multiplication instruction.\n");
+    sleep(1); // Simulate the time taken for the Decode stage
+}
+
+void execute(int a, int b) {
+    printf("Execute Stage: Performing the multiplication of %d and %d.\n", a, b);
+    int result = a * b;
+    printf("Result of multiplication: %d\n", result);
+    sleep(1); // Simulate the time taken for the Execute stage
+}
+
+void writeback() {
+    printf("Writeback Stage: Writing the result back.\n");
+    sleep(1); // Simulate the time taken for the Writeback stage
+}
+
+int main() {
+    int num1 = 20;
+    int num2 = 12;
+
+    printf("Starting 4-stage pipeline simulation for multiplication...\n");
+
+    // Simulate the 4 stages of pipelining for one multiplication operation
+    fetch();     // Stage 1: Fetch
+    decode();    // Stage 2: Decode
+    execute(num1, num2); // Stage 3: Execute
+    writeback(); // Stage 4: Writeback
+
+    // Total clock cycles needed for one multiplication operation
+    int stages = 4; // Fetch, Decode, Execute, Writeback
+    int totalClockCycles = stages;
+
+    printf("Total clock cycles needed to complete the multiplication operation: %d\n", totalClockCycles);
+
+    return 0;
+}
