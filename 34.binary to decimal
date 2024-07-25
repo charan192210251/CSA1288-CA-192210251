@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+// Function to convert a binary number (as a string) to a decimal number
+int binaryToDecimal(const char* binary) {
+    int decimal = 0;
+    int length = 0;
+    
+    // Calculate the length of the binary string
+    while (binary[length] != '\0') {
+        length++;
+    }
+    
+    // Convert binary to decimal
+    for (int i = 0; i < length; i++) {
+        if (binary[i] == '1') {
+            decimal += pow(2, length - i - 1);
+        }
+    }
+    
+    return decimal;
+}
+
+int main() {
+    // Given binary number as a string
+    const char* binaryNumber = "11110111";
+    
+    // Convert the binary number to decimal
+    int decimalNumber = binaryToDecimal(binaryNumber);
+    
+    // Print the result
+    printf("Binary number: %s\n", binaryNumber);
+    printf("Decimal equivalent: %d\n", decimalNumber);
+    
+    return 0;
+}
