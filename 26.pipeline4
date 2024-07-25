@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <unistd.h> // For sleep function to simulate clock cycles
+
+// Simulates the Fetch stage of the pipeline
+void fetch() {
+    printf("Fetch Stage: Retrieving the instruction to perform multiplication.\n");
+    sleep(1); // Simulate time for the fetch stage
+}
+
+// Simulates the Decode stage of the pipeline
+void decode() {
+    printf("Decode Stage: Decoding the multiplication instruction.\n");
+    sleep(1); // Simulate time for the decode stage
+}
+
+// Simulates the Execute stage of the pipeline
+void execute(int a, int b) {
+    printf("Execute Stage: Performing the multiplication of %d and %d.\n", a, b);
+    int result = a * b;
+    printf("Result of multiplication: %d\n", result);
+    sleep(1); // Simulate time for the execute stage
+}
+
+// Function to simulate the 3-stage pipeline for multiplication
+void pipeline_simulation(int a, int b) {
+    printf("Starting 3-stage pipeline simulation for multiplication...\n");
+
+    fetch();  // Stage 1: Fetch
+    decode(); // Stage 2: Decode
+    execute(a, b); // Stage 3: Execute
+
+    // Total clock cycles needed for one multiplication operation
+    int stages = 3; // Fetch, Decode, Execute
+    int totalClockCycles = stages;
+
+    printf("Total clock cycles needed to complete the multiplication operation: %d\n", totalClockCycles);
+}
+
+int main() {
+    int num1 = 8;
+    int num2 = 15;
+
+    pipeline_simulation(num1, num2);
+
+    return 0;
+}
