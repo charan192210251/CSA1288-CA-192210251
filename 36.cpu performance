@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <time.h>
+
+// Function to calculate CPU performance metrics
+void calculatePerformance(double requestTime, double responseTime, int numberOfProcesses, double totalExecutionTime) {
+    // Calculate throughput
+    double throughput = numberOfProcesses / totalExecutionTime;
+
+    // Calculate average response time
+    double averageResponseTime = responseTime / requestTime;
+
+    // Print performance metrics
+    printf("Total Execution Time: %.2f seconds\n", totalExecutionTime);
+    printf("Average Response Time: %.2f seconds\n", averageResponseTime);
+    printf("Throughput: %.2f processes per second\n", throughput);
+}
+
+int main() {
+    // Variables to hold user inputs
+    double requestTime, responseTime, totalExecutionTime;
+    int numberOfProcesses;
+
+    // Get user input for performance metrics
+    printf("Enter the total request time (in seconds): ");
+    scanf("%lf", &requestTime);
+
+    printf("Enter the total response time (in seconds): ");
+    scanf("%lf", &responseTime);
+
+    printf("Enter the number of processes completed: ");
+    scanf("%d", &numberOfProcesses);
+
+    printf("Enter the total execution time (in seconds): ");
+    scanf("%lf", &totalExecutionTime);
+
+    // Calculate and display the CPU performance metrics
+    calculatePerformance(requestTime, responseTime, numberOfProcesses, totalExecutionTime);
+
+    return 0;
+}
